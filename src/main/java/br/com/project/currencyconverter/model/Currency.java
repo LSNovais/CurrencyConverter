@@ -21,7 +21,7 @@ public class Currency {
     @Id
     @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idUsuario;
+    Integer idUsuario;
 
     @Name("moeda_origem")
     String moedaOrigem;
@@ -36,6 +36,6 @@ public class Currency {
     Double txConvUtil;
 
     @Name("data_hora")
-    Date dataHora;
+    String dataHora;
 
 }

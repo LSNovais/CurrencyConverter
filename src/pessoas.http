@@ -1,4 +1,5 @@
-@host = http://localhost:8080/currencyConverter/consult/transactions
+//@host = http://localhost:8080/currencyConverter/consult/transactions
+@host = http://localhost:8080/currencyConverter/convert/USD/100/BRL
 
 ###
 

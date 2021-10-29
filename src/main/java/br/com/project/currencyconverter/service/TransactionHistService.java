@@ -20,5 +20,9 @@ public class TransactionHistService {
     public List<TransactionHist> findAll(){
         return transactionHistRepository.findAll();
     }
+
+    public TransactionHist save(TransactionHist transactionHist){
+        return transactionHistRepository.save(transactionHist);
+    }
     
 }

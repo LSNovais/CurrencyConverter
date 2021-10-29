@@ -1,5 +1,6 @@
 package br.com.project.currencyconverter.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +11,11 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class CurrencyService {
-    public CurrencyService(){
-        
-    } 
 
+    public CurrencyService(){};
+
+
+    @Autowired
     private CurrencyRepository currencyRepository;
 
     public List<Currency> findAll(){

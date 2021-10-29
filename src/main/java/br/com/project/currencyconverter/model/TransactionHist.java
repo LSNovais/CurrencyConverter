@@ -21,11 +21,11 @@ public class TransactionHist {
     @Id
     @Column(name = "id_transaction_hist")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    Integer id;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private Currency idUsuario;
+    Currency idUsuario;
 
     @Name("valor_destino")
     Double valorDestino;
