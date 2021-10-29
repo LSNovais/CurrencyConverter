@@ -1,6 +1,6 @@
 package br.com.project.currencyconverter.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +36,6 @@ public class Currency {
     Double txConvUtil;
 
     @Name("data_hora")
-    String dataHora;
+    Date dataHora;
 
 }

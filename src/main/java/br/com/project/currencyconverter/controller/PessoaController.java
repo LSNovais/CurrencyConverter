@@ -1,8 +1,11 @@
 package br.com.project.currencyconverter.controller;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.project.currencyconverter.model.Currency;
 import br.com.project.currencyconverter.model.TransactionHist;
+import br.com.project.currencyconverter.service.CurrencyConversionService;
 import br.com.project.currencyconverter.service.CurrencyService;
 import br.com.project.currencyconverter.service.TransactionHistService;
 import lombok.AllArgsConstructor;
@@ -32,17 +36,13 @@ public class PessoaController {
     @Autowired
     private CurrencyService currencyService;
 
-
-
-
-
     public PessoaController(){};
         
     @CrossOrigin
-    @GetMapping(path = "/consult/transactions")
-    public ResponseEntity<?> findAll(){
+    @GetMapping(path = "/consult/transactions/{idUsuario}")
+    public ResponseEntity<?> findByUser(@PathVariable Integer idUsuario){
         List<TransactionHist> transactionHist = new ArrayList();
-        transactionHist =  transactionHistService.findAll();
+        transactionHist =  transactionHistService.findByUser(idUsuario);
         return ResponseEntity.ok(transactionHist);
     }
 
@@ -54,23 +54,24 @@ public class PessoaController {
 
 
     @CrossOrigin
-    @GetMapping(path = "/convert/{moedaOrigem}/{valorOrigem}/{moedaDestino}")
-    public ResponseEntity<?> converterTransactionHist(@PathVariable String moedaOrigem, @PathVariable Double valorOrigem, @PathVariable String moedaDestino){
+    @GetMapping(path = "/convert/{idUsuario}/{moedaOrigem}/{valorOrigem}/{moedaDestino}")
+    public ResponseEntity<?> converterTransactionHist(@PathVariable Integer idUsuario, @PathVariable String moedaOrigem, @PathVariable Double valorOrigem, @PathVariable String moedaDestino){
         TransactionHist transactionHist = new TransactionHist();
         TransactionHist transactionHistAdded = new TransactionHist();
+        CurrencyConversionService currencyConversionService = new CurrencyConversionService();
         Currency currency = new Currency();
 
         currency.setMoedaOrigem(moedaOrigem);
         currency.setValorOrigem(valorOrigem);
         currency.setMoedaDestino(moedaDestino);
-        currency.setDataHora("teste");
-        currency.setIdUsuario(2);
-        currency.setTxConvUtil(100.0);
+        currency.setDataHora(new Date());
+        currency.setIdUsuario(idUsuario);
+        currency.setTxConvUtil(currencyConversionService.taxConversion(currency.getMoedaOrigem(), currency.getMoedaDestino()));
 
         if(converterCurrency(currency).getStatusCode().equals(HttpStatus.CREATED)){
-            transactionHist.setId(2);
+            transactionHist.setId(idUsuario);
             transactionHist.setIdUsuario(currency);
-            transactionHist.setValorDestino(200.0);
+            transactionHist.setValorDestino(currencyConversionService.conversion(currency));
         }else{
             return converterCurrency(currency);
         }
