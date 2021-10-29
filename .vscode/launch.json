@@ -1,0 +1,38 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch CurrencyconverterApplication",
+            "request": "launch",
+            "mainClass": "br.com.project.currencyconverter.CurrencyconverterApplication",
+            "projectName": "plusfriends (3)"
+        },
+        {
+            "type": "java",
+            "name": "Launch CurrencyconverterApplication",
+            "request": "launch",
+            "mainClass": "br.com.project.currencyconverter.CurrencyconverterApplication",
+            "projectName": "Currencyconverter (3)"
+        },
+        {
+            "type": "java",
+            "name": "8080 Currencyconverter",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.project.plusfriends.CurrencyconverterApplication",
+            "projectName": "Currencyconverter",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "8081 Currencyconverter",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.project.plusfriends.CurrencyconverterApplication",
+            "projectName": "Currencyconverter",
+            "vmArgs": "-Dserver.port=8081"
+        }
+    ]
+}
