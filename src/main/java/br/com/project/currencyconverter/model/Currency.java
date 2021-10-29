@@ -1,6 +1,6 @@
 package br.com.project.currencyconverter.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +21,7 @@ public class Currency {
     @Id
     @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idUsuario;
+    Integer idUsuario;
 
     @Name("moeda_origem")
     String moedaOrigem;
