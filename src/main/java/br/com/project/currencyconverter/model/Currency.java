@@ -19,8 +19,11 @@ public class Currency {
     
 
     @Id
-    @Column(name = "id_usuario")
+    @Column(name = "id_currency")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer idCurrency;
+
+    @Name("id_usuario")
     Integer idUsuario;
 
     @Name("moeda_origem")

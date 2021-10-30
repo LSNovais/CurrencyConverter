@@ -2,8 +2,13 @@ package br.com.project.currencyconverter.service;
 
 import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.project.currencyconverter.CurrencyconverterApplication;
 import br.com.project.currencyconverter.model.Currency;
 
 @Service
@@ -14,6 +19,9 @@ public class CurrencyConversionService {
     private int count;
     private Double txConversionOrigin;
     private Double txConversionDestiny;
+
+    private static Logger logger = LoggerFactory.getLogger(CurrencyconverterApplication.class);
+
 
 
     public CurrencyConversionService(){
@@ -33,11 +41,14 @@ public class CurrencyConversionService {
     };
 
 
-    public Double conversion(Currency currency){
+    public Double conversion(Currency currency) throws NullPointerException, ArithmeticException, IllegalArgumentException, Exception {
+        logger.info("CurrencyConversionService.conversion - Preparando para gerar o valor convertido");
         return currency.getValorOrigem() * taxConversion(currency.getMoedaOrigem(), currency.getMoedaDestino());
     }
 
-    public Double taxConversion(String currencyOrigin, String currencyDestiny){
+    public Double taxConversion(String currencyOrigin, String currencyDestiny) throws NullPointerException, ArithmeticException, IllegalArgumentException, Exception{
+        logger.info("CurrencyConversionService.taxConversion - Preparando para gerar a taxa de conversão.");
+
         count = 0;
         txConversionOrigin = 0.0;
         txConversionDestiny = 0.0;
@@ -57,7 +68,7 @@ public class CurrencyConversionService {
 
 
 
-
+        logger.info("CurrencyConversionService.taxConversion - Taxa de conversão gerada - " + txConversionOrigin * txConversionDestiny);
         return txConversionOrigin * txConversionDestiny;
     }
     
