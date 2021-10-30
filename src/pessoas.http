@@ -1,7 +1,6 @@
-//@host = http://localhost:8080/currencyConverter/consult/transactions
+@host = http://localhost:8080/currencyConverter/consult/transactions/3
 //@host = http://localhost:8080/currencyConverter/convert/3/BRL/1/USD
-
-@host = http://localhost:8080/currencyConverter/convert/2/USD/100/EUR
+//@host = http://localhost:8080/currencyConverter/convert/3/USD/1/EUR
 
 ###
 
