@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -97,7 +98,7 @@ public class PessoaController {
 
 
     @CrossOrigin
-    @GetMapping(path = "/convert/{idUsuario}/{moedaOrigem}/{valorOrigem}/{moedaDestino}")
+    @PostMapping(path = "/convert/{idUsuario}/{moedaOrigem}/{valorOrigem}/{moedaDestino}")
     public ResponseEntity<?> converterTransactionHist(@PathVariable Integer idUsuario, @PathVariable String moedaOrigem, @PathVariable Double valorOrigem, @PathVariable String moedaDestino) {
         TransactionHist transactionHist = new TransactionHist();
         TransactionHist transactionHistAdded = new TransactionHist();
