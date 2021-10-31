@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -149,8 +150,12 @@ public class PessoaController {
         }catch(SQLDataException dae){
             logger.info("PessoaController.converterTransactionHist - Falha ao gravar nova conversão com o id "+currency.getIdCurrency()+" e idUsuario "+currency.getIdUsuario());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(transactionHistAdded);
+        }catch(HttpMessageConversionException httpmce){
+            logger.info("Falha ao coletar valores de conversão da API externa");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(transactionHistAdded);
         }catch(Exception e){
             logger.info("PessoaController.converterTransactionHist - Falha ao realizar nova conversão com o id "+currency.getIdCurrency()+" e idUsuario "+currency.getIdUsuario());
+            logger.info(e.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(transactionHistAdded);
         }
     }
