@@ -1,0 +1,6 @@
+
+//@host = http://localhost:8080/currencyConverter/convert/{idUser}/{currencyOrigin}/{valueOrigin}/{currencyDestiny}
+@host = http://localhost:8080/currencyConverter/convert/3/BRL/2000/JPY
+
+
+{{host}}

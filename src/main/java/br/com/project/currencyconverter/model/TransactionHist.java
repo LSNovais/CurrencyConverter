@@ -1,3 +1,9 @@
+/*
+ * Class: TransactionHist.java
+ * Created: 28/10/2021
+ * Rights Reserved: Jaya
+ */  
+
 package br.com.project.currencyconverter.model;
 
 
@@ -13,6 +19,12 @@ import javax.persistence.Table;
 import jdk.jfr.Name;
 import lombok.Data;
 
+
+
+/**
+ * @version 1.0
+ * @author Lucas Novais dos Santos
+ */
 @Entity
 @Table(name = "TRANSACTIONHIST")
 @Data
@@ -24,11 +36,12 @@ public class TransactionHist {
     Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    Currency idUsuario;
+    @JoinColumn(name = "id_user")
+    Currency idUser;
 
-    @Name("valor_destino")
-    Double valorDestino;
+    @Name("value_destiny")
+    Double valueDestiny;
+
 
     
 }

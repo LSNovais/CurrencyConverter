@@ -1,3 +1,9 @@
+/*
+ * Class: Currency.java
+ * Created: 28/10/2021
+ * Rights Reserved: Jaya
+ */  
+
 package br.com.project.currencyconverter.model;
 
 import java.util.Date;
@@ -12,6 +18,13 @@ import javax.persistence.Table;
 import jdk.jfr.Name;
 import lombok.Data;
 
+
+
+
+/**
+ * @version 1.0
+ * @author Lucas Novais dos Santos
+ */
 @Entity
 @Table(name = "CURRENCY")
 @Data
@@ -23,22 +36,22 @@ public class Currency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idCurrency;
 
-    @Name("id_usuario")
-    Integer idUsuario;
+    @Name("id_user")
+    Integer idUser;
 
-    @Name("moeda_origem")
-    String moedaOrigem;
+    @Name("currency_origin")
+    String currencyOrigin;
 
-    @Name("valor_origem")
-    Double valorOrigem;
+    @Name("value_origin")
+    Double valueOrigin;
 
-    @Name("moeda_destino")
-    String moedaDestino;
+    @Name("currency_destiny")
+    String currencyDestiny;
 
     @Name("tx_conv_util")
     Double txConvUtil;
 
-    @Name("data_hora")
-    Date dataHora;
+    @Name("date_hour")
+    Date dateHour;
 
 }

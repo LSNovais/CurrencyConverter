@@ -1,3 +1,9 @@
+/*
+ * Class: SubCurrencyConversionApiDTO.java
+ * Created: 31/10/2021
+ * Rights Reserved: Jaya
+ */  
+
 package br.com.project.currencyconverter.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,6 +13,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+
+
+/**
+ * @version 1.0
+ * @author Lucas Novais dos Santos
+ */
 @AllArgsConstructor
 @Getter
 @Setter
