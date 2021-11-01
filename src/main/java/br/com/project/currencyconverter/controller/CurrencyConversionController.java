@@ -106,7 +106,6 @@ public class CurrencyConversionController {
      * @return A confirmação da inserção dos dados no banco de dados;
      * @since 11.0
      */
-    @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> converterCurrency(Currency currency){
         Currency currencyAdded = new Currency();
         try{
@@ -143,7 +142,7 @@ public class CurrencyConversionController {
      * @since 11.0
      */
     @CrossOrigin
-    @GetMapping(path = "/convert/{idUsuario}/{moedaOrigem}/{valorOrigem}/{moedaDestino}")
+    @GetMapping(path = "/convert/{idUser}/{currencyOrigin}/{valueOrigin}/{currencyDestiny}")
     public ResponseEntity<?> converterTransactionHist(@PathVariable Integer idUser, @PathVariable String currencyOrigin, @PathVariable Double valueOrigin, @PathVariable String currencyDestiny) {
         TransactionHist transactionHist = new TransactionHist();
         TransactionHist transactionHistAdded = new TransactionHist();
